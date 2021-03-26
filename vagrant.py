@@ -16,11 +16,12 @@ defaults = ["interesting_domains.list", "to_discover.list"]
 queue = Queue()
 
 def get_args():
+    global threads
     parser = argparse.ArgumentParser()
     parser.add_argument("-d", "--domains", dest="domains", help="Domains to walk through")
     parser.add_argument("-o", "--output", dest="output", nargs='*', help="Send output to file")
     parser.add_argument("-b", "--both", dest="both", action="store_true", help="Creates two files in current directory with default names")
-    parser.add_argument("-t", "--threads", dest="threads", help="Number of threads")
+    parser.add_argument("-t", "--threads", type=int, dest="threads", help="Number of threads")
     arguments = parser.parse_args()
     if not arguments.domains:
         parser.error("null target")
@@ -73,7 +74,7 @@ def walk_through(domains):
     queue.join()
 
 def run_domain(domain):        
-    check_domain(fine_url)        
+    check_domain(fine_url(domain))        
 
 def check_domain(url):
     try:
