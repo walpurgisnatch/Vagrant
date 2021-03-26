@@ -7,7 +7,7 @@ Check subdomains to identify which one can contain some interesting stuff.
  - Output can be set in number of ways:
    - With `-o` flag which can get up to 2 arguments: 
    - first one will create file with domains that potentially contain some stuff;
-   - second argument will create file with all other alive domains.
+   - second argument will create another file with all other alive domains.
    - With `-b` flag which will create 2 files in current directory with the names stored in 'defaults' variable.
 
 ## Examples
