@@ -84,9 +84,10 @@ def check_domain(url):
             interesting_domains.append(location)
             print("[+] {} looks interesting".format(location))
             write_line(to_file(0), location)
-        elif response.status_code != 404 and location not in to_discover:
-            to_discover.append(location)            
-            write_line(to_file(1), location)            
+        elif output_exists[1] or args.both:
+            if response.status_code != 404 and location not in to_discover:
+                to_discover.append(location)            
+                write_line(to_file(1), location)            
     except Exception as e:
         pass
 
